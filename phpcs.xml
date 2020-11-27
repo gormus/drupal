@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal_coder">
+  <description>PHP CodeSniffer configuration for Drupal coding standards.</description>
+
+  <file>.</file>
+  <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
+
+  <!--Exclude folders used by common frontend tools. These folders match the file_scan_ignore_directories setting in default.settings.php-->
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/bower_components/*</exclude-pattern>
+
+  <config name="drupal_core_version" value="8" />
+
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal" />
+  <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice" />
+</ruleset>

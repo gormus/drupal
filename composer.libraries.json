@@ -1,0 +1,50 @@
+{
+    "repositories": {
+        "ckeditor.liststyle": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/liststyle",
+                "version": "4.14.1",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "ckeditor/plugins/liststyle"
+                },
+                "dist": {
+                    "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.14.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "webprofiler.d3": {
+            "type": "package",
+            "package": {
+                "name": "d3/d3",
+                "version": "v3.5.17",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/d3/d3.git",
+                    "type": "git",
+                    "reference": "tags/v3.5.17"
+                }
+            }
+        },
+        "webprofiler.highlightjs": {
+            "type": "package",
+            "package": {
+                "name": "highlightjs/highlightjs",
+                "version": "9.7.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/highlightjs/highlight.js.git",
+                    "type": "git",
+                    "reference": "tags/9.7.0"
+                }
+            }
+        }
+    },
+    "require": {
+        "ckeditor/liststyle": "^4.14",
+        "d3/d3": "^3.5",
+        "highlightjs/highlightjs": "^9.7"
+    }
+}

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run phpunit inside the web container
+## Usage: phpunit [flags] [args]
+## Example: "ddev phpunit [options] UnitTest [UnitTest.php]" or "ddev phpunit [options] <directory>"
+
+/var/www/html/vendor/bin/phpunit $@

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run Drupal Console inside the web container
+## Usage: drupal [flags] [args]
+## Example: "ddev drupal uli" or "ddev drupal sql-cli" or "ddev drupal --version"
+
+/var/www/html/vendor/bin/drupal $@

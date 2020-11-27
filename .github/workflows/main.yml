@@ -1,0 +1,36 @@
+name: Main workflow
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+
+jobs:
+    composer-build:
+        runs-on: ubuntu-18.04
+        steps:
+            -
+                name: Checkout repository
+                uses: actions/checkout@v2
+            -
+                name: Install Composer v1
+                run: |
+                    wget https://getcomposer.org/composer-1.phar
+                    chmod +x composer-1.phar
+            -
+                name: Validate composer.json and composer.lock
+                run: ./composer-1.phar validate
+            -
+                name: Cache Composer packages
+                id: composer-cache
+                uses: actions/cache@v2
+                with:
+                    path: vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+            -
+                name: Install dependencies
+                if: steps.composer-cache.outputs.cache-hit != 'true'
+                run: ./composer-1.phar --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader --dev
