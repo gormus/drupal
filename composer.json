@@ -129,7 +129,7 @@
                 "[project-root]/.env": {
                     "mode": "replace",
                     "path": "assets/example.env",
-                    "overwrite": true
+                    "overwrite": false
                 },
                 "[project-root]/.eslintrc.json": {
                     "mode": "replace",
