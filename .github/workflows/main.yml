@@ -45,3 +45,16 @@ jobs:
                 with:
                     name: Drupal-Artifact
                     path: artifact.tar
+
+            -
+                name: List files
+                run: 'ls -hAlF --color'
+
+            -
+                name: PHP CodeSniffer
+                uses: chekalsky/phpcs-action@v1
+                if: ${{ github.event_name == 'pull_request' }}
+                with:
+                    enable_warnings: true
+                    phpcs_bin_path: './vendor/bin/phpcs'
+                    installed_paths: '${{ github.workspace }}/vendor/drupal/coder/coder_sniffer/Drupal,${{ github.workspace }}/vendor/drupal/coder/coder_sniffer/DrupalPractice'
