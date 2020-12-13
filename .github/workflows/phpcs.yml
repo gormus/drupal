@@ -10,6 +10,19 @@ jobs:
             -
                 name: Checkout repository
                 uses: actions/checkout@v2
+
+            -
+                uses: actions/download-artifact@v2
+                with:
+                    name: Drupal-Artifact
+                    path: artifact.tar
+
+            -
+                name: Extract files
+                run: |
+                    tar -xvf artifact.tar --directory ./
+                    ls -hAlF --color
+
             -
                 name: PHP CodeSniffer
                 uses: chekalsky/phpcs-action@v1

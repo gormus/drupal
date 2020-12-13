@@ -33,4 +33,15 @@ jobs:
             -
                 name: Install dependencies
                 if: steps.composer-cache.outputs.cache-hit != 'true'
-                run: ./composer-1.phar --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader --no-dev
+                run: ./composer-1.phar --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader --dev
+
+            -
+                name: Tar files
+                run: tar -cvf artifact.tar ${{ github.workspace }}
+
+            -
+                name: Upload Artifact
+                uses: actions/upload-artifact@v2
+                with:
+                    name: Drupal-Artifact
+                    path: artifact.tar
