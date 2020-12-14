@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bd524ffa6bddeb8f715e113588f3366",
+    "content-hash": "40aa84161570a28c622a203d456cd560",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -72,24 +72,6 @@
                 "reference": "78424e9c97b569e698cc9175e9bc424168219162"
             },
             "type": "bower-asset"
-        },
-        {
-            "name": "bower-asset/editor.md",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pandao/editor.md.git",
-                "reference": "af08536772e34f6ef95870bb4cfd85d09bf1c932"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pandao/editor.md/zipball/af08536772e34f6ef95870bb4cfd85d09bf1c932",
-                "reference": "af08536772e34f6ef95870bb4cfd85d09bf1c932"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
         },
         {
             "name": "bower-asset/jquery",
@@ -251,6 +233,18 @@
             ],
             "description": "Drupal code generator",
             "time": "2020-12-05T05:59:11+00:00"
+        },
+        {
+            "name": "ckeditor/liststyle",
+            "version": "4.14.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.14.1.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "ckeditor/plugins/liststyle"
+            }
         },
         {
             "name": "composer/installers",
@@ -1288,6 +1282,16 @@
             ],
             "description": "Provides a way to patch Composer packages.",
             "time": "2020-09-30T17:56:20+00:00"
+        },
+        {
+            "name": "d3/d3",
+            "version": "v3.5.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/d3/d3.git",
+                "reference": "tags/v3.5.17"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -3013,59 +3017,6 @@
             }
         },
         {
-            "name": "drupal/editor_md",
-            "version": "3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/editor_md.git",
-                "reference": "8.x-3.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/editor_md-8.x-3.2.zip",
-                "reference": "8.x-3.2",
-                "shasum": "35751ee5affe50f698e434b399e58f3a25fe1a56"
-            },
-            "require": {
-                "drupal/core": "~8.0",
-                "drupal/markdown": "^2.0",
-                "unicorn-fail/editor.md": "^1.5.1"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-3.2",
-                    "datestamp": "1570898584",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "a wei (a65162)",
-                    "homepage": "https://www.drupal.org/u/a65162",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Mark Carver (markcarver)",
-                    "homepage": "https://www.drupal.org/u/markcarver",
-                    "role": "Co-Maintainer"
-                }
-            ],
-            "description": "Powerful open source Markdown editor.",
-            "homepage": "https://drupal.org/project/editor_md",
-            "support": {
-                "source": "http://cgit.drupalcode.org/editor_md",
-                "issues": "https://drupal.org/project/issues/editor_md"
-            }
-        },
-        {
             "name": "drupal/entity_reference_revisions",
             "version": "1.8.0",
             "source": {
@@ -3625,67 +3576,6 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/linkit",
                 "issues": "http://drupal.org/project/linkit"
-            }
-        },
-        {
-            "name": "drupal/markdown",
-            "version": "2.0.0-rc1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/markdown.git",
-                "reference": "8.x-2.0-rc1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/markdown-8.x-2.0-rc1.zip",
-                "reference": "8.x-2.0-rc1",
-                "shasum": "2c5759f7570906cfb9be95ac51b7e9e561487bc0"
-            },
-            "require": {
-                "composer/semver": "^1.0 || ^2.0",
-                "drupal/core": "^8",
-                "php": ">=5.5.9"
-            },
-            "suggest": {
-                "league/commonmark": "The PHP CommonMark parser is a robust, highly-extensible Markdown parser for PHP based on the CommonMark and Github-Flavored Markdown specifications (version 1.3.0 and higher is supported).",
-                "webuni/commonmark-attributes-extension": "The Attributes extension adds a syntax to define attributes on the various HTML elements in markdown's output."
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-2.0-rc1",
-                    "datestamp": "1589205629",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Carver (markcarver)",
-                    "homepage": "https://www.drupal.org/u/markcarver",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Gisle Hannemyr (gisle)",
-                    "homepage": "https://www.drupal.org/u/gisle",
-                    "role": "Co-Maintainer"
-                },
-                {
-                    "name": "markhalliwell",
-                    "homepage": "https://www.drupal.org/user/501638"
-                }
-            ],
-            "description": "Allows content to be submitted using Markdown, a simple plain-text syntax that is transformed into valid HTML.",
-            "homepage": "https://www.drupal.org/project/markdown",
-            "support": {
-                "source": "https://git.drupalcode.org/project/markdown",
-                "issues": "https://www.drupal.org/project/markdown"
             }
         },
         {
@@ -5279,6 +5169,16 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "highlightjs/highlightjs",
+            "version": "9.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/highlightjs/highlight.js.git",
+                "reference": "tags/9.7.0"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "kub-at/php-simple-html-dom-parser",
@@ -8732,36 +8632,6 @@
             "time": "2019-12-10T11:53:27+00:00"
         },
         {
-            "name": "unicorn-fail/editor.md",
-            "version": "v1.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/unicorn-fail/editor.md.git",
-                "reference": "fa38e83740ab48693097f5a6aae69981fe62870d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/unicorn-fail/editor.md/zipball/fa38e83740ab48693097f5a6aae69981fe62870d",
-                "reference": "fa38e83740ab48693097f5a6aae69981fe62870d",
-                "shasum": ""
-            },
-            "type": "drupal-library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Carver (markcarver)",
-                    "homepage": "https://www.drupal.org/u/markcarver",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Open source embeddable online markdown editor.",
-            "homepage": "https://www.drupal.org/project/editor_md",
-            "time": "2018-03-29T21:44:54+00:00"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v5.2.0",
             "source": {
@@ -9322,18 +9192,6 @@
             "time": "2020-03-11T14:43:21+00:00"
         },
         {
-            "name": "ckeditor/liststyle",
-            "version": "4.14.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.14.1.zip"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "ckeditor/plugins/liststyle"
-            }
-        },
-        {
             "name": "composer/ca-bundle",
             "version": "1.2.8",
             "source": {
@@ -9628,16 +9486,6 @@
                 }
             ],
             "time": "2020-11-13T08:04:11+00:00"
-        },
-        {
-            "name": "d3/d3",
-            "version": "v3.5.17",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/d3/d3.git",
-                "reference": "tags/v3.5.17"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -10618,16 +10466,6 @@
                 "scraper"
             ],
             "time": "2018-06-29T15:13:57+00:00"
-        },
-        {
-            "name": "highlightjs/highlightjs",
-            "version": "9.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/highlightjs/highlight.js.git",
-                "reference": "tags/9.7.0"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "instaclick/php-webdriver",
