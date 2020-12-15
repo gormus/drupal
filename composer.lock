@@ -235,18 +235,6 @@
             "time": "2020-12-05T05:59:11+00:00"
         },
         {
-            "name": "ckeditor/liststyle",
-            "version": "4.14.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.14.1.zip"
-            },
-            "type": "drupal-library",
-            "extra": {
-                "installer-name": "ckeditor/plugins/liststyle"
-            }
-        },
-        {
             "name": "composer/installers",
             "version": "v1.9.0",
             "source": {
@@ -1284,16 +1272,6 @@
             "time": "2020-09-30T17:56:20+00:00"
         },
         {
-            "name": "d3/d3",
-            "version": "v3.5.17",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/d3/d3.git",
-                "reference": "tags/v3.5.17"
-            },
-            "type": "drupal-library"
-        },
-        {
             "name": "dflydev/dot-access-data",
             "version": "v1.1.0",
             "source": {
@@ -2228,30 +2206,30 @@
         },
         {
             "name": "drupal/content_lock",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/content_lock.git",
-                "reference": "8.x-2.1"
+                "reference": "8.x-2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/content_lock-8.x-2.1.zip",
-                "reference": "8.x-2.1",
-                "shasum": "a83983c8deb697cf19863153b2b8c0e1a2452c2f"
+                "url": "https://ftp.drupal.org/files/projects/content_lock-8.x-2.2.zip",
+                "reference": "8.x-2.2",
+                "shasum": "9ea5810067c0df18879a16a19236e0cb46f9fba7"
             },
             "require": {
                 "drupal/core": "^8.8|^9.0"
             },
             "require-dev": {
-                "drupal/conflict": "dev-2.x",
+                "drupal/conflict": "^2.0@ALPHA",
                 "drupal/prefetch_cache": "dev-1.x"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.1",
-                    "datestamp": "1591342900",
+                    "version": "8.x-2.2",
+                    "datestamp": "1607936866",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5169,16 +5147,6 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
-        },
-        {
-            "name": "highlightjs/highlightjs",
-            "version": "9.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/highlightjs/highlight.js.git",
-                "reference": "tags/9.7.0"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "kub-at/php-simple-html-dom-parser",
@@ -9192,6 +9160,18 @@
             "time": "2020-03-11T14:43:21+00:00"
         },
         {
+            "name": "ckeditor/liststyle",
+            "version": "4.14.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.14.1.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "ckeditor/plugins/liststyle"
+            }
+        },
+        {
             "name": "composer/ca-bundle",
             "version": "1.2.8",
             "source": {
@@ -9486,6 +9466,16 @@
                 }
             ],
             "time": "2020-11-13T08:04:11+00:00"
+        },
+        {
+            "name": "d3/d3",
+            "version": "v3.5.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/d3/d3.git",
+                "reference": "tags/v3.5.17"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -10466,6 +10456,16 @@
                 "scraper"
             ],
             "time": "2018-06-29T15:13:57+00:00"
+        },
+        {
+            "name": "highlightjs/highlightjs",
+            "version": "9.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/highlightjs/highlight.js.git",
+                "reference": "tags/9.7.0"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "instaclick/php-webdriver",
