@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run PHP Code Beautifier and Fixer inside the web container
+## Usage: phpcbf [flags] [args]
+## Example: "ddev phpcbf -i" or "ddev phpcbf --help"
+
+/var/www/html/vendor/bin/phpcbf -ps --colors --standard=/var/www/html/phpcs.xml -- $@

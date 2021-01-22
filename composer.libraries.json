@@ -43,7 +43,9 @@
         }
     },
     "require": {
-        "ckeditor/liststyle": "^4.14",
+        "ckeditor/liststyle": "^4.14"
+    },
+    "require-dev": {
         "d3/d3": "^3.5",
         "highlightjs/highlightjs": "^9.7"
     }
