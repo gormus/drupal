@@ -33,7 +33,7 @@
         "drupal/config_inspector": "^1.1",
         "drupal/config_split": "^1.4",
         "drupal/content_lock": "^2.1",
-        "drupal/core-composer-scaffold": "^8.8",
+        "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^8.8",
         "drupal/diff": "^1.0",
         "drupal/dropzonejs": "^2.1",
