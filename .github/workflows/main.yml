@@ -8,41 +8,42 @@ on:
 
 jobs:
     composer-build:
-        runs-on: ${{ matrix.operating-system }}
-        name: PHP ${{ matrix.php-versions }}
-            strategy:
-                operating-system: ubuntu-18.04
-                php-versions: ['7.3', '7.4']
+        name: PHP ${{ matrix.php }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: ['ubuntu-18.04', 'ubuntu-latest']
+                php: ['7.3', '7.4']
         steps:
             -
                 name: Checkout repository
                 uses: actions/checkout@v2
             -
-                name: Install Composer v1
-                run: |
-                    wget https://getcomposer.org/composer-1.phar
-                    chmod +x composer-1.phar
+                name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    tools: 'composer:v1'
             -
-                name: Validate composer.json and composer.lock
-                run: ./composer-1.phar validate
+                name: Get Composer Cache Directory
+                id: composer-cache
+                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
             -
                 name: Cache Composer packages
-                id: composer-cache
                 uses: actions/cache@v2
                 with:
-                    path: vendor
+                    path: ${{ steps.composer-cache.outputs.dir }}
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-composer-
+                    restore-keys: ${{ runner.os }}-composer-
             -
                 name: Install dependencies
                 if: steps.composer-cache.outputs.cache-hit != 'true'
-                run: ./composer-1.phar --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader --dev
+                run: composer --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader
             -
                 name: PHP CodeSniffer
                 uses: chekalsky/phpcs-action@v1
                 if: ${{ github.event_name == 'pull_request' }}
                 with:
                     enable_warnings: true
-                    phpcs_bin_path: './vendor/bin/phpcs'
+                    phpcs_bin_path: ${{ steps.composer-cache.outputs.dir }}/bin/phpcs
                     installed_paths: '${{ github.workspace }}/vendor/drupal/coder/coder_sniffer/Drupal,${{ github.workspace }}/vendor/drupal/coder/coder_sniffer/DrupalPractice'
