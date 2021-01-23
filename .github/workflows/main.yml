@@ -12,12 +12,27 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: ['ubuntu-latest', 'ubuntu-18.04']
+                os: ['ubuntu-18.04']
                 php: ['7.4', '7.3']
         steps:
             -
                 name: Checkout repository
                 uses: actions/checkout@v2
+                with:
+                    fetch-depth: 0
+            -
+                name: Get changed files
+                id: changed-files
+                run: |
+                    echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }}| xargs)"
+            -
+                name: echo the changed files
+                run: |
+                  for i in ${{ steps.changed-files.outputs.files }}
+                  do
+                      echo $i
+                  done
+                 
             -
                 name: Setup PHP
                 uses: shivammathur/setup-php@v2
@@ -41,9 +56,7 @@ jobs:
                 run: composer --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader
             -
                 name: PHP CodeSniffer
-                uses: chekalsky/phpcs-action@v1
                 if: ${{ github.event_name == 'pull_request' }}
-                with:
-                    enable_warnings: true
-                    phpcs_bin_path: './vendor/bin/phpcs'
+                run: |
+                    ./vendor/bin/phpcs -ps --colors --standard=phpcs.xml
                     
