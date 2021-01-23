@@ -1,62 +1,51 @@
 name: Main workflow
 
 on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-    composer-build:
-        name: PHP ${{ matrix.php }} on ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: ['ubuntu-18.04']
-                php: ['7.4', '7.3']
-        steps:
-            -
-                name: Checkout repository
-                uses: actions/checkout@v2
-                with:
-                    fetch-depth: 0
-            -
-                name: Get changed files
-                id: changed-files
-                run: |
-                    echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }}| xargs)"
-            -
-                name: echo the changed files
-                run: |
-                  for i in ${{ steps.changed-files.outputs.files }}
-                  do
-                      echo $i
-                  done
-                 
-            -
-                name: Setup PHP
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: ${{ matrix.php }}
-                    tools: 'composer:v1'
-            -
-                name: Get Composer Cache Directory
-                id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-            -
-                name: Cache Composer packages
-                uses: actions/cache@v2
-                with:
-                    path: ${{ steps.composer-cache.outputs.dir }}
-                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                    restore-keys: ${{ runner.os }}-composer-
-            -
-                name: Install dependencies
-                if: steps.composer-cache.outputs.cache-hit != 'true'
-                run: composer --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader
-            -
-                name: PHP CodeSniffer
-                if: ${{ github.event_name == 'pull_request' }}
-                run: |
-                    ./vendor/bin/phpcs -ps --colors --standard=phpcs.xml
-                    
+  composer-build:
+    name: PHP ${{ matrix.php }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-18.04']
+        php: ['7.4', '7.3']
+    steps:
+      -
+        name: Checkout repository
+        uses: actions/checkout@v2
+      -
+        name: Setup PHP ${{ matrix.php }} with Composer v1
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: 'composer:v1'
+      -
+        name: Get Composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      -
+        name: Cache Composer packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      -
+        name: Install Composer packages
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer --no-ansi --no-interaction install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+      -
+        name: List pull requests files
+        uses: jitterbit/get-changed-files@v1
+        if: ${{ github.event_name == 'pull_request' }}
+        id: pr-files
+      -
+        name: PHP CodeSniffer
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          ./vendor/bin/phpcs -ps --colors --standard=phpcs.xml ${{ steps.pr-files.outputs.all }}
