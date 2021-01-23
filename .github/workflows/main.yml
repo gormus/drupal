@@ -8,7 +8,7 @@ on:
 
 jobs:
     composer-build:
-        name: PHP ${{ matrix.php }}
+        name: PHP ${{ matrix.php }} on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
