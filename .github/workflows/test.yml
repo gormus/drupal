@@ -63,7 +63,7 @@ jobs:
       - name: Upload the TAR artifact
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-php-${{ matrix.php }}-composer-${{ matrix.composer-v }}
+          name: artifact-php-${{ matrix.php-v }}-composer-${{ matrix.composer-v }}
           path: artifact.tar
 
   phpcs:
