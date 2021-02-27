@@ -4,9 +4,11 @@ on:
   # Trigger the workflow on push or pull requests,
   # but only when targeting the master branch.
   push:
-    branches: [master]
+    branches:
+      - main
   pull_request:
-    branches: [master]
+    branches:
+      - main
 
 jobs:
   build:
