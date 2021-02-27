@@ -38,6 +38,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-v }}
           tools: composer:${{ matrix.composer-v }}
+          extensions: gd
           coverage: xdebug
 
       - name: Validate Composer files
