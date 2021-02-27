@@ -40,9 +40,6 @@ jobs:
           tools: composer:${{ matrix.composer-v }}
           coverage: xdebug
 
-      - name: Update Composer global configuration
-        run: composer config --global github-oauth.github.com ${{ secrets.UNITY_GITHUB_PAT }}
-
       - name: Validate Composer files
         run: composer validate --strict
 
