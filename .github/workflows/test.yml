@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Composer ${{ matrix.composer-v }}, and PHP ${{ matrix.php-v }}
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.11.0
         with:
           php-version: ${{ matrix.php-v }}
           tools: composer:${{ matrix.composer-v }}
@@ -71,7 +71,7 @@ jobs:
     runs-on: ${{ matrix.os-v[0] }}
     steps:
       - name: Setup PHP ${{ matrix.php-v[0] }}
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.11.0
         with:
           php-version: ${{ matrix.php-v[0] }}
           tools: composer:${{ matrix.composer-v[0] }}
