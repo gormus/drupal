@@ -56,7 +56,7 @@
         "ext-json": "*",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.7",
-        "drupal/admin_toolbar": "^2.4",
+        "drupal/admin_toolbar": "^3.0",
         "drupal/config_split": "^1.4",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
