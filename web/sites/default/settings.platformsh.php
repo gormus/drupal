@@ -1,12 +1,14 @@
 <?php
+
 /**
  * @file
  * Platform.sh settings.
  */
 
 use Drupal\Core\Installer\InstallerKernel;
+use Platformsh\ConfigReader\Config;
 
-$platformsh = new \Platformsh\ConfigReader\Config();
+$platformsh = new Config();
 
 // Configure the database.
 if ($platformsh->hasRelationship('database')) {
@@ -18,7 +20,7 @@ if ($platformsh->hasRelationship('database')) {
     'password' => $creds['password'],
     'host' => $creds['host'],
     'port' => $creds['port'],
-    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])],
   ];
 }
 
@@ -126,7 +128,7 @@ $settings['trusted_host_patterns'] = ['.*'];
 // and 'd8config:' into $config.
 foreach ($platformsh->variables() as $name => $value) {
   $parts = explode(':', $name);
-  list($prefix, $key) = array_pad($parts, 3, null);
+  list($prefix, $key) = array_pad($parts, 3, NULL);
   switch ($prefix) {
     // Variables that begin with `d8settings` or `drupal` get mapped
     // to the $settings array verbatim, even if the value is an array.
