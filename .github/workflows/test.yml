@@ -52,7 +52,7 @@ jobs:
 
       - name: Install dependencies - Composer ${{ matrix.composer-v }}, PHP ${{ matrix.php }}
         if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Tar files
         run: tar -cvf artifact.tar ${{ github.workspace }}
