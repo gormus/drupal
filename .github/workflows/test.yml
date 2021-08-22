@@ -21,11 +21,9 @@ jobs:
           - ubuntu-20.04
         php-v:
           - 7.4
-          - 8
         composer-v:
           - 2
         node-v:
-          - 12
           - 14
     name: ${{ matrix.os-v }} PHP ${{ matrix.php-v }}
     steps:
@@ -54,7 +52,7 @@ jobs:
 
       - name: Install dependencies - Composer ${{ matrix.composer-v }}, PHP ${{ matrix.php }}
         if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress --no-suggest --no-dev
 
       - name: Tar files
         run: tar -cvf artifact.tar ${{ github.workspace }}
