@@ -20,12 +20,11 @@ jobs:
         os-v:
           - ubuntu-20.04
         php-v:
-          - 7.3
           - 7.4
+          - 8
         composer-v:
-          - v1
+          - 2
         node-v:
-          - 10
           - 12
           - 14
     name: ${{ matrix.os-v }} PHP ${{ matrix.php-v }}
