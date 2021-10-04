@@ -70,7 +70,7 @@
         "d3/d3": "^3.5",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/coder": "^8.3",
-        "drupal/config_inspector": "^1.1",
+        "drupal/config_inspector": "^2.0",
         "drupal/console": "^1.9",
         "drupal/core-dev": "^8.8",
         "drupal/devel": "^4.0",
