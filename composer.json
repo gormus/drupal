@@ -14,6 +14,19 @@
             "email": "osman@gorm.us"
         }
     ],
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "files": [
+            "load.environment.php"
+        ]
+    },
     "repositories": {
         "drupal": {
             "type": "composer",
@@ -51,64 +64,47 @@
         }
     },
     "require": {
-        "php": "^7.4",
-        "ext-SimpleXML": "*",
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
         "ext-json": "*",
-        "composer/installers": "^1.2",
+        "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
-        "drupal/admin_toolbar": "^3.0",
-        "drupal/config_split": "^1.4",
-        "drupal/core-composer-scaffold": "^8.8",
-        "drupal/core-recommended": "^8.8",
-        "drupal/redis": "^1.4",
-        "drush/drush": "^10",
+        "drupal/console": "^1.9",
+        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-recommended": "^9.2",
+        "drush/drush": "^10.6",
         "oomphinc/composer-installers-extender": "^2.0",
-        "platformsh/config-reader": "^2.4",
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "d3/d3": "^3.5",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/coder": "^8.3",
-        "drupal/config_inspector": "^1.1",
-        "drupal/console": "^1.9",
-        "drupal/core-dev": "^8.8",
-        "drupal/devel": "^4.0",
-        "drupal/examples": "^1.0",
-        "drupal/upgrade_status": "^3.0",
+        "drupal/core-dev": "^9.2",
+        "drupal/devel": "^4.1",
+        "drupal/examples": "^3.0",
+        "drupal/stage_file_proxy": "^1.1",
         "highlightjs/highlightjs": "^9.7",
         "kint-php/kint": "^3.3",
-        "pheromone/phpcs-security-audit": "^2.0",
         "roave/security-advisories": "dev-latest"
     },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "platform": {
-            "php": "7.4"
-        },
-        "sort-packages": true
-    },
-    "autoload": {
-        "files": [
-            "load.environment.php"
-        ]
-    },
     "scripts": {
+        "update-drupal": [
+            "composer update composer/installers drupal/core-composer-scaffold drupal/core-recommended drupal/core-dev --with-dependencies"
+        ],
+        "update-contrib": [
+            "composer update 'drupal/*' --with-dependencies"
+        ],
         "phpcs": [
             "./vendor/bin/phpcs -ps --colors --standard=./phpcs.xml --"
         ],
         "phpcbf": [
             "./vendor/bin/phpcbf -pv --colors --standard=./phpcs.xml --"
         ],
-        "install-codestandards": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        "install-dot-env": [
+            "@php -r \"file_exists('.env') || copy('example.env', '.env');\""
         ],
-        "post-install-cmd": [
-            "@install-codestandards"
+        "post-root-package-install": [
+            "@install-dot-env"
         ]
     },
     "scripts-descriptions": {
@@ -116,19 +112,18 @@
         "phpcbf": "Runs PHP Code Beautifier and Fixer using the configuration defined in './phpcs.xml' file."
     },
     "extra": {
-        "installer-types": [
-            "bower-asset",
-            "npm-asset"
-        ],
         "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
             "file-mapping": {
                 "[project-root]/.editorconfig": {
                     "append": "assets/editorconfig",
                     "overwrite": true
                 },
-                "[project-root]/.csslintrc": {
+                "[project-root]/example.env": {
                     "mode": "replace",
-                    "path": "web/core/assets/scaffold/files/csslintrc",
+                    "path": "assets/example.env",
                     "overwrite": true
                 },
                 "[project-root]/.env": {
@@ -136,47 +131,41 @@
                     "path": "assets/example.env",
                     "overwrite": false
                 },
-                "[project-root]/.eslintrc.json": {
-                    "mode": "replace",
-                    "path": "assets/eslintrc.json",
-                    "overwrite": true
-                },
-                "[web-root]/sites/default/default.services.yml": false,
-                "[web-root]/sites/default/example.settings.local.php": {
-                    "mode": "replace",
-                    "path": "assets/example.settings.local.php",
+                "[web-root]/robots.txt": {
+                    "append": "assets/robots.txt",
                     "overwrite": true
                 },
                 "[web-root]/sites/default/services.local.yml": {
                     "mode": "replace",
                     "path": "assets/services.local.yml",
-                    "overwrite": true
-                },
-                "[web-root]/sites/default/settings.php": {
-                    "mode": "replace",
-                    "path": "assets/settings.php",
                     "overwrite": false
                 },
+                "[web-root]/sites/default/example.settings.local.php": {
+                    "mode": "replace",
+                    "path": "web/core/assets/scaffold/files/example.settings.local.php",
+                    "overwrite": true
+                },
+                "[web-root]/sites/default/default.services.yml": false,
+                "[web-root]/sites/default/default.settings.php": false,
                 "[web-root]/sites/development.services.yml": false,
                 "[web-root]/sites/example.settings.local.php": false,
                 "[web-root]/sites/example.sites.php": false,
                 "[web-root]/sites/README.txt": false,
                 "[web-root]/themes/README.txt": false,
-                "[web-root]/.csslintrc": false,
-                "[web-root]/.eslintrc.json": false,
-                "[web-root]/.ht.router.php": false,
-                "[web-root]/.htaccess": false,
                 "[web-root]/example.gitignore": false,
                 "[web-root]/INSTALL.txt": false,
+                "[web-root]/.htaccess": false,
                 "[web-root]/modules/README.txt": false,
                 "[web-root]/profiles/README.txt": false,
-                "[web-root]/README.txt": false,
+                "[web-root]/README.md": false,
+                "[web-root]/update.php": false,
                 "[web-root]/web.config": false
-            },
-            "locations": {
-                "web-root": "web/"
             }
         },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
@@ -201,6 +190,9 @@
             "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
@@ -209,11 +201,7 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {
-            "drupal/dropzonejs": {
-                "#3051658: Make dropzonejs widget available to the new Media Library in core": "https://www.drupal.org/files/issues/2020-10-26/3051658-12.patch"
-            }
-        },
+        "patches": {  },
         "composer-exit-on-patch-failure": true
     }
 }

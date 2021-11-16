@@ -3,3 +3,6 @@
 /index.php
 /robots.txt
 /update.php
+/.csslintrc
+/.eslintrc.json
+/.ht.router.php

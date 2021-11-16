@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="drupal_coder">
-  <description>PHP CodeSniffer configuration for Drupal coding standards.</description>
+  <description>PHP CodeSniffer configuration for Drupal development.</description>
 
   <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt,md,yml"/>
 
@@ -8,9 +8,8 @@
   <exclude-pattern>*/node_modules/*</exclude-pattern>
   <exclude-pattern>*/bower_components/*</exclude-pattern>
 
-  <config name="drupal_core_version" value="8" />
+  <config name="drupal_core_version" value="9" />
 
-  <!-- drupal/coder -->
-  <rule ref="Drupal" />
-  <rule ref="DrupalPractice" />
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal" />
+  <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice" />
 </ruleset>

@@ -1,6 +1,5 @@
 version: 2
 updates:
-
     -   package-ecosystem: "github-actions"
         directory: "/"
         schedule:
@@ -11,11 +10,7 @@ updates:
         schedule:
             interval: "daily"
         allow:
-            # Allow both direct and indirect updates for all packages
             -   dependency-type: "direct"
-        # Allow up to 10 open pull requests for pip dependencies
         open-pull-requests-limit: 10
-        # Disable rebasing for composer pull requests
         rebase-strategy: "disabled"
-        # Increase the version requirements for Composer only when required
         versioning-strategy: increase-if-necessary
