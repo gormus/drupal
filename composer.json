@@ -82,7 +82,7 @@
         "drupal/core-dev": "^9.2",
         "drupal/devel": "^4.1",
         "drupal/examples": "^3.0",
-        "drupal/stage_file_proxy": "^1.1",
+        "drupal/stage_file_proxy": "^2.0",
         "highlightjs/highlightjs": "^9.7",
         "kint-php/kint": "^3.3",
         "roave/security-advisories": "dev-latest"
