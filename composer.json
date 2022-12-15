@@ -72,7 +72,7 @@
         "drupal/console": "^1.9",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-recommended": "^9.2",
-        "drush/drush": "^10.6",
+        "drush/drush": "^11.4",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.3"
     },
